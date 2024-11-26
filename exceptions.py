@@ -9,3 +9,6 @@ class InvalidInput(LibraryException):
 
 class InvalidPrompt(LibraryException):
     pass
+
+class SystemError(LibraryException):
+    pass

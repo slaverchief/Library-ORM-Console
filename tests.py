@@ -1,5 +1,5 @@
 import unittest
-from api import add, list_objects, change_status, delete
+from executors import add, list_objects, change_status, delete
 
 from exceptions import *
 

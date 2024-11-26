@@ -10,7 +10,7 @@ def main():
             command = input(f"Введите одну из следующих комманд: "
                             f"{[''+command for command in ALLOWED_COMMAND_LIST]} ")
             if command not in ALLOWED_COMMAND_LIST:
-                raise LibraryException("введенная вами команда не предусмотрена")
+                raise InvalidInput("введенная вами команда не предусмотрена")
             print(manage_command(command))
         except InvalidInput as exc:
             print(f"Произошла ошибка в введенных вами данных: {str(exc)}")

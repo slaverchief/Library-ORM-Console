@@ -12,3 +12,4 @@ class InvalidPrompt(LibraryException):
 
 class SystemError(LibraryException):
     pass
+

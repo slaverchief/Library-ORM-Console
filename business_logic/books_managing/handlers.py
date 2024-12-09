@@ -1,15 +1,16 @@
-from executors import *
-from exceptions import *
+from .executors import *
+from core.exceptions import *
 
-def add_book() -> str:
+def add_book_handler() -> str:
     try:
-        return add(title = input("Введите название книги: "),
-                   author = input("Введите автора книги: "),
-                   year = int(input("Введите год выпуска книги: ")))
+        title = input("Введите название книги: ")
+        author = input("Введите автора книги: ")
+        year = int(input("Введите год выпуска книги: "))
     except ValueError:
         raise InvalidInput("введен невалидный год")
+    return add_book(title, author, year)
 
-def list_book_objects() -> str:
+def list_books_handler() -> str:
     print('Далее вам надо ввести поля поиска, оставьте их пустыми, если они вам не важны.')
     title = input("Введите название книги: ")
     author = input("Введите автора книги: ")
@@ -27,21 +28,21 @@ def list_book_objects() -> str:
         except ValueError:
             raise InvalidInput("вы указали невалидный год книги")
     return_str = ''
-    for book in Book.list_objects(**kwargs):
+    for book in list_books(**kwargs):
         return_str += str(book) + '\n'
     return return_str
 
-def change_book_status() -> str:
+def change_book_status_handler() -> str:
     try:
         id = int(input("Введите id книги, для которой вы меняете статус: "))
-        return change_status(id)
+        return change_book_status(id)
     except ValueError:
         raise InvalidInput("невалидный id книги")
 
 
-def delete_book() -> str:
+def delete_book_handler() -> str:
     try:
         id = int(input("Введите id книги, которую вы удаляете: "))
-        return delete(id)
+        return delete_book(id)
     except ValueError:
         raise InvalidInput("невалидный id книги")
